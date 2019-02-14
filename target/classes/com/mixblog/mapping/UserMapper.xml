@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mixblog.dao.UserMapper" >
+	<!-- 登陆查询 -->
+	<select id="userselect" resultType="com.mixblog.pojo.User" parameterType="com.mixblog.pojo.User">
+		select * from user where uname=#{uname} and upw=#{upw} or uemail=#{uemail} and upw=#{upw}
+	</select>
+	<!-- 查询是否有重复用户名 -->
+	<select id="userselectone" resultType="com.mixblog.pojo.User" parameterType="com.mixblog.pojo.User">
+		select * from user where uname=#{0}
+	</select>
+	<!-- 添加用户 -->
+	<insert id="useradd" parameterType="com.mixblog.pojo.User">
+		insert into user (uname,uemail,upw) values(#{uname},#{uemail},#{upw})
+	</insert>
+	<!-- 登录时判断当前时间是否有过期的会员 -->
+	<update id="userpdvip" parameterType="com.mixblog.pojo.User">
+		update user set uvip=0
+		where udqvip&lt;NOW()-interval 1 SECOND
+	</update>
+	<!-- 保存用户信息 -->
+	<update id="usersave" parameterType="com.mixblog.pojo.User">
+		update user set uemail=#{uemail},uqq=#{uqq}
+		where uname=#{uname}
+	</update>
+	<!-- 管理员保存用户信息 -->
+	<update id="adusersave" parameterType="com.mixblog.pojo.User">
+		update user set uemail=#{uemail},uqq=#{uqq},upw=#{upw}
+		where uid=#{uid}
+	</update>
+	<select id="userselectus" parameterType="com.mixblog.pojo.User" resultType="com.mixblog.pojo.User">
+		select * from user where uname=#{uname}
+	</select>
+			<!-- 开通VIP扣钱 -->
+			<update id="userktvip1" parameterType="com.mixblog.pojo.User">
+				update user set ubalance=ubalance - 30
+				where uid=#{uid}
+			</update>
+			<update id="userktvip2" parameterType="com.mixblog.pojo.User">
+				update user set ubalance=ubalance - 50
+				where uid=#{uid}
+			</update>
+			<update id="userktvip3" parameterType="com.mixblog.pojo.User">
+				update user set ubalance=ubalance - 66
+				where uid=#{uid}
+			</update>
+			<!-- 开通VIP 到期时间 -->
+			<update id="userudqvip1" parameterType="com.mixblog.pojo.User">
+				update user set udqvip=now(),udqvip=date_add(NOW(), interval 30 DAY) where uid=#{uid};
+			</update>
+			<update id="userudqvip2" parameterType="com.mixblog.pojo.User">
+				update user set udqvip=now(),udqvip=date_add(NOW(), interval 360 DAY) where uid=#{uid};
+			</update>
+			<update id="userudqvip3" parameterType="com.mixblog.pojo.User">
+				update user set udqvip=now(),udqvip=date_add(NOW(), interval 100 YEAR) where uid=#{uid};
+			</update>
+			<update id="userktvip">
+				update user set uvip = 1
+				where uid=#{uid};
+			</update>
+			<!-- 续费VIP 到期时间 -->
+			<update id="userudqvip11" parameterType="com.mixblog.pojo.User">
+				UPDATE user set udqvip = DATE_ADD(udqvip, interval 30 DAY) where uid =#{uid} 
+			</update>
+			<update id="userudqvip22" parameterType="com.mixblog.pojo.User">
+				UPDATE user set udqvip = DATE_ADD(udqvip, interval 360 DAY) where uid =#{uid} 
+			</update>
+			<update id="userudqvip33" parameterType="com.mixblog.pojo.User">
+				UPDATE user set udqvip = DATE_ADD(udqvip, interval 100 YEAR) where uid =#{uid} 
+			</update>
+			
+		<!-- <update id="umoneyadd" parameterType="map">
+			update user set ubalance = ubalance + #{code.codequota} where uid = #{user.uid}
+		</update> -->
+		<!-- 使用充值码增加用户余额 -->
+		<update id="umoneyadd1" parameterType="com.mixblog.pojo.User">
+			update user set ubalance = ubalance + 30 where uid = #{uid}
+		</update>
+		<update id="umoneyadd2" parameterType="com.mixblog.pojo.User">
+			update user set ubalance = ubalance + 50 where uid = #{uid}
+		</update>
+		<update id="umoneyadd3" parameterType="com.mixblog.pojo.User">
+			update user set ubalance = ubalance + 66 where uid = #{uid}
+		</update>
+		<update id="usermodify" parameterType="com.mixblog.pojo.User">
+			update user set upw = #{0} where uid = #{1}
+		</update>
+		<select id="uuserlist" resultType="com.mixblog.pojo.User">
+			select * from user limit #{0},#{1}
+		</select>
+		<select id="ucount" resultType="Integer">
+			select count(*) from user
+		</select>
+		<select id="ucountvip" resultType="Integer">
+			select count(*) from user where uvip=1
+		</select>
+		<select id="usearch" parameterType="com.mixblog.pojo.User" resultType="com.mixblog.pojo.User">
+		<bind name="uname1" value="'%' + uname + '%'"/>
+		select * from user  where uname like #{uname1} or uemail like #{uname1}
+		</select>
+		<select id="uselect" parameterType="com.mixblog.pojo.User" resultType="com.mixblog.pojo.User">
+			select * from user where uid = #{uid}
+		</select>
+		<delete id="aduserdel" parameterType="Integer">
+			delete from user where uid = #{0}
+		</delete>
+		<select id="selectbyemail" parameterType="com.mixblog.pojo.User" resultType="com.mixblog.pojo.User">
+			select * from user where uemail = #{uemail}
+		</select>
+		<update id="usersetpw" parameterType="com.mixblog.pojo.User">
+			update user set upw= #{1} where uemail = #{0}
+		</update>
+</mapper>

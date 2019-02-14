@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mixblog.dao.NoticeMapper" >
+	<select id="slist" resultType="com.mixblog.pojo.Notice">
+		select * from system 
+	</select>
+	<select id="sselect" parameterType="Integer" resultType="com.mixblog.pojo.Notice"> 
+		select * from system where sid = #{sid}
+	</select>
+	<select id="sselect1" resultType="com.mixblog.pojo.Notice">
+		select * from system where sid = 1
+	</select>
+	<select id="sselect2" resultType="com.mixblog.pojo.Notice">
+		select * from system where sid = 2
+	</select>
+	<select id="sselect3" resultType="com.mixblog.pojo.Notice">
+		select * from system where sid = 3
+	</select>
+	<update id="nupdate" parameterType="com.mixblog.pojo.Notice">
+		update system set stitle=#{stitle},scontent=#{scontent}  where sid = #{sid}
+	</update>
+</mapper>

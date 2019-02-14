@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mixblog.dao.SignMapper" >
+	<insert id="signadd" parameterType="com.mixblog.pojo.Sign">
+		insert into sign (signuid,signip,signcountry,signtime,signbrower)  values(#{signuid},#{signip},#{signcountry},now(),#{signbrower})
+	</insert>
+	
+	<select id="slist" resultType="com.mixblog.pojo.Sign1">
+		select * from sign s left join user u on s.signuid = u.uid ORDER BY s.signtime DESC limit #{0},#{1} 
+	</select>
+	
+	<select id="scount" resultType="Integer">
+		select count(*) from sign
+	</select>
+</mapper>

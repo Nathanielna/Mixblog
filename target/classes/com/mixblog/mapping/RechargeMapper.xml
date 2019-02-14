@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mixblog.dao.RechargeMapper" >
+	<select id="rlistone" resultType="com.mixblog.pojo.Recharge">
+			select * from recharge where ruserid = #{ruserid} order by rcreatetime desc
+	</select>
+	<insert id="radd1" parameterType="com.mixblog.pojo.User">
+		insert into recharge (ruserid,rmoney,rpurpose) values(#{uid},30,'通过充值码')
+	</insert>
+	<insert id="radd2" parameterType="com.mixblog.pojo.User">
+		insert into recharge (ruserid,rmoney,rpurpose) values(#{uid},50,'通过充值码')
+	</insert>
+	<insert id="radd3" parameterType="com.mixblog.pojo.User">
+		insert into recharge (ruserid,rmoney,rpurpose) values(#{uid},66,'通过充值码')
+	</insert>
+	
+	
+</mapper>

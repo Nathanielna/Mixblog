@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mixblog.dao.ResourcesMapper" >
+	
+	<select id="rlist" resultType="com.mixblog.pojo.Resources">
+		select * from resources ORDER BY rrelease DESC limit #{0},#{1} 
+	</select>
+	<select id="rflsplist" resultType="com.mixblog.pojo.Resources">
+		select * from resources  where rca = 1 ORDER BY rrelease DESC  limit #{0},#{1} 
+	</select>
+	<select id="rsysplist" resultType="com.mixblog.pojo.Resources">
+		select * from resources  where rca = 2 ORDER BY rrelease DESC limit #{0},#{1}
+	</select>
+	<select id="rjpttlist" resultType="com.mixblog.pojo.Resources">
+		select * from resources  where rca = 3 ORDER BY rrelease DESC limit #{0},#{1}
+	</select>
+	<select id="rzxsplist" resultType="com.mixblog.pojo.Resources">
+		select * from resources  where rca = 4 ORDER BY rrelease DESC limit #{0},#{1}
+	</select>
+	<select id="rcount" resultType="Integer">
+		select count(*) from resources
+	</select>
+	<select id="rflspcount" resultType="Integer">
+		select count(*) from resources where rca = 1
+	</select>
+	<select id="rsyspcount" resultType="Integer">
+		select count(*) from resources where rca = 2
+	</select>
+	<select id="rjpttcount" resultType="Integer">
+		select count(*) from resources where rca = 3
+	</select>
+	<select id="rzxspcount" resultType="Integer">
+		select count(*) from resources where rca = 4
+	</select>
+	<insert id="radd" parameterType="com.mixblog.pojo.Resources">
+		insert into resources (rname,rauthor,rsize,rtime,rcontent,rca,rpic) values(#{rname},'Admin',#{rsize},#{rtime},#{rcontent},#{rca},#{rpic})
+	</insert>
+	<select id="rsrname" resultType="Integer" parameterType="com.mixblog.pojo.Resources">
+		select count(*) from resources where rname = #{rname}
+	</select>
+	<select id="rselectno" resultType="com.mixblog.pojo.Resources">
+		select * from resources where rid= #{rid}
+	</select>
+	<update id="pupdate" parameterType="com.mixblog.pojo.Resources">
+		update resources set rname=#{rname},rcontent=#{rcontent},rca=#{rca},rsize=#{rsize},rtime=#{rtime},rpic=#{rpic}  where rid = #{rid}
+	</update>
+	 <select id="rsearch" parameterType="com.mixblog.pojo.Resources" resultType="com.mixblog.pojo.Resources">
+	 	<bind name="rname1" value="'%' + rname + '%'"/>
+		select * from resources  where rname like #{rname1}
+	</select> 
+	<delete id="adminpdel" parameterType="Integer">
+		delete from resources where rid = #{0}
+	</delete>
+</mapper>

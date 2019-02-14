@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mixblog.dao.CodeMapper" >
+		<!-- 查询充值码是否可用 -->
+	     <select id="cselect" parameterType="com.mixblog.pojo.Code" resultType="com.mixblog.pojo.Code">
+			select * from code 
+			where codevar = #{codevar} 
+		</select>
+		<!--  充值码状态改为已使用  -->
+		<update id="cuse" parameterType="com.mixblog.pojo.Code" >
+				update code set codetype = 1  where codevar = #{codevar}
+			</update>
+			
+			<select id="clist" resultType="com.mixblog.pojo.Code">
+				select * from code limit #{0},#{1}
+			</select>
+			<insert id="ccodeadd" parameterType="com.mixblog.pojo.Code">
+				insert into code (codequota,codevar) values(#{codequota},#{codevar})
+			</insert>
+			<select id="ccodeselect" parameterType="com.mixblog.pojo.Code" resultType="Integer">
+				select * from code where codevar = #{codevar}
+			</select>
+			<select id="ccount" resultType="Integer">
+				select count(*) from code
+			</select>
+			<select id="cucount" resultType="Integer">
+				select count(*) from code where codetype=1
+			</select>
+			<select id="cncount" resultType="Integer">
+				select count(*) from code where codetype=0
+			</select>
+			<select id="csearch" parameterType="com.mixblog.pojo.Code" resultType="com.mixblog.pojo.Code">
+			 	<bind name="codevar1" value="'%' + codevar + '%'"/>
+				select * from code  where codevar like #{codevar1}
+			</select> 
+</mapper>

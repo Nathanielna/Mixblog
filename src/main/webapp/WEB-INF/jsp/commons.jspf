@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<meta charset="utf-8">
+
+
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+        <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        
+        <link rel="shortcut icon" href="https://yun.12byg.com/index.php?user/publicLink&fid=a0e2lTMWaLQcHUzOca-6JanhehE1BjJqX0RNS-6VNGac9C0gzwuo5xd_AbToq2rUomCP5BGcKaw1L_H8lRjapQ_iMo4YzXqa-vh6QKq4MtUPprXiK7hwwXVdx1MtVkbMihkeMizW1ziOIXyhFOd6OA&file_name=/uugai.com-1548333790777.png">
+        <link rel="Bookmark" href="https://yun.12byg.com/index.php?user/publicLink&fid=a0e2lTMWaLQcHUzOca-6JanhehE1BjJqX0RNS-6VNGac9C0gzwuo5xd_AbToq2rUomCP5BGcKaw1L_H8lRjapQ_iMo4YzXqa-vh6QKq4MtUPprXiK7hwwXVdx1MtVkbMihkeMizW1ziOIXyhFOd6OA&file_name=/uugai.com-1548333790777.png">
+        
+        
+        <link rel="stylesheet" href="https://yun.12byg.com/index.php?user/publicLink&fid=7089Lky5C-Ivrty-4ULm5lUTPCyw8vQX0d3sytN5XgFqk25MtT1HYmg7cYcyBDRGPLBavtVTPeKd3BxVL6DxhuwAkIAmJJj096L2LjYGltG15g18uTf2vgiF_n2BsF4xFurKfGZvry2A&file_name=/sweetalert.css " type='text/css' />
+		<script src="https://yun.12byg.com/index.php?user/publicLink&fid=2648bMD6hHxyL0BNRqZUgkHuHeO6PQx_pm_-lL4fpBGfeYKUgj4ptfp4fBZbbUmOXnPNUEQbn_TQQPii2AXoEii7qZjxicrYvwVnOdQEWZUVMubbG8a9ieBe0V-RR4pW_tHd20Bg75MSG2Lp&file_name=/sweetalert.min.js "></script>
+		
+		<script src="https://yun.12byg.com/index.php?user/publicLink&fid=8c99j6xXPO-hW19kAsBHMz_zThQiCBwmp0NVNYASNC1Yp4RaalBGXXQfQV2tl0MZzFU0JCPhLF6DgryWY3r45m4D46NZL_8lFGCEmEekJDEhh3UX-ywj4S-FcpCwNwkbx15-z1_5b3I5XLCL4oN7fZe7CdrwEZdH85ml16me5ZxZnick1w83gaU&file_name=/jqthumb.min.js"></script>
